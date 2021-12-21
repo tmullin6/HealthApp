@@ -1,24 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import {useState} from "react";
+import {Button,ButtonGroup} from '@mui/material';
+
+const Header = ()=>{
+
+  return (
+    <>
+    <div className="header">
+        <div className="title">Health App</div>
+        <div className="register">
+          <ButtonGroup variant="contained">
+          <Button>Login</Button>
+          <Button>Sign Up</Button>
+          </ButtonGroup>
+        </div>
+    </div>
+    </>
+
+  )}
+
+const Body = ()=>{
+  return (
+  <div className="body">
+    <div className="user-info">
+    <p>User Calories and info here</p>
+    </div>
+    <div className="add-items">
+    <p>Links to add exercises/food/etc. here</p>
+    </div>
+  
+  </div>
+)}
 
 function App() {
+
+  const[user,setUser]=useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Header />
+    <Body />
+    </>
   );
 }
 

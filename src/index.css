@@ -1,0 +1,32 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    height: 90px;
+    border-bottom: 1px solid black;
+}
+
+.title {
+    width: 60px;
+    height:inherit;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.register {
+    display: inline-block;
+}
+
+.body{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.user-info, .add-items{
+    height: 400px;
+    width: 400px;
+    border: 2px solid black;
+}
+
+
+
+
