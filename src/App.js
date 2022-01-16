@@ -1,44 +1,50 @@
 import {useState} from "react";
-import {Button,ButtonGroup} from '@mui/material';
+import Navbar from "./components/navbar";
+import Footer from "./components/footer";
+import Login from "./components/login";
 
-const Header = ()=>{
 
+const Body = user=>{
+
+  if(user===true){
   return (
     <>
-    <div className="header">
-        <div className="title">Health App</div>
-        <div className="register">
-          <ButtonGroup variant="contained">
-          <Button>Login</Button>
-          <Button>Sign Up</Button>
-          </ButtonGroup>
-        </div>
+    <Navbar />
+    <div className="body">
+      <div className="user-info">
+        <p>User Calories and info here</p>
+      </div>
+      <div className="add-items">
+        <p>Links to add exercises/food/etc. here</p>
+      </div>
+  
     </div>
+    <Footer />
     </>
-
+    
   )}
 
-const Body = ()=>{
+  else {
+
   return (
-  <div className="body">
-    <div className="user-info">
-    <p>User Calories and info here</p>
+    <div>
+      <Login />
     </div>
-    <div className="add-items">
-    <p>Links to add exercises/food/etc. here</p>
-    </div>
-  
-  </div>
-)}
+  )}
+}
+
+
 
 function App() {
 
   const[user,setUser]=useState(false);
 
+  
   return (
     <>
-    <Header />
-    <Body />
+      
+      <Body user={user} />
+      
     </>
   );
 }
