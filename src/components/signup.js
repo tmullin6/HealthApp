@@ -2,7 +2,7 @@ import Footer from "./footer";
 import {useState} from "react";
 import {Button,ButtonGroup} from '@mui/material';
 import {Link} from "react-router-dom";
-
+import apiServices from "../services/api";
 
 function Signup(){
   const[firstName,setFirstName] =useState('');
@@ -13,11 +13,11 @@ function Signup(){
   const[height,setHeight] =useState(0);
   const[weight,setWeight] =useState(0);
 
-  const createUser = (event)=>{
+  const postUser = (event)=>{
     event.preventDefault();
 
     let user = {
-      userName:username,
+      username:username,
       password:password,
       firstName:firstName,
       lastName:lastName,
@@ -37,9 +37,12 @@ function Signup(){
     if(missingInfo.length !=0){
       alert(`Please provide the following information: \n ${missingInfo}`);
     }
-    else{
-      console.log("User Created:",user);
-    }
+    
+    apiServices.createUser(user).then((res)=>{
+    //if(!res.ok){ throw new Error("Server Error")};
+    console.log(JSON.stringify(user));
+    })
+    
     
   }
   
@@ -105,7 +108,7 @@ function Signup(){
        
        <div className="buttons">
         <ButtonGroup variant="contained">
-        <Button type="submit" onClick={createUser}>Sign Up</Button>
+        <Button type="submit" onClick={postUser}>Sign Up</Button>
         <Button><Link to="/login"> Back to Login</Link></Button>
         </ButtonGroup>
         </div>
